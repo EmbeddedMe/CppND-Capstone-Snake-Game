@@ -1,12 +1,8 @@
-# CPPND: Capstone Snake Game Example
+# CPPND: Capstone Snake Game - Extended
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This project is based on the starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
 <img src="snake_game.gif"/>
-
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
-
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -44,3 +40,25 @@ This work is licensed under a
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+## Rubric 
+
+| README (All Rubric Points REQUIRED) |
+| Success Criteria	| Specifications |
+A README with instructions is included with the project |
+
+The README is included with the project and has instructions for building/running the project.
+
+If any additional libraries are needed to run the project, these are indicated with cross-platform installation instructions.
+
+You can submit your writeup as markdown or pdf. |
+
+The README indicates which project is chosen.
+
+The README describes the project you have built.
+
+The README also indicates the file and class structure, along with the expected behavior or output of the program. |
+
+The README includes information about each rubric point addressed. |
+
+The README indicates which rubric points are addressed. The README also indicates where in the code (i.e. files and line numbers) that the rubric points are addressed. |
