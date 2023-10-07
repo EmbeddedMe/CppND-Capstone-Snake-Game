@@ -11,7 +11,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
-               std::size_t target_frame_duration) {
+               std::size_t target_frame_duration, AI &ai) {
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
   Uint32 frame_end;
@@ -22,8 +22,13 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   while (running) {
     frame_start = SDL_GetTicks();
 
-    // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, snake);
+    // Get automated control input for snake
+    ai.MoveTowardsFood(snake, food);
+
+    // Input
+    // controller.HandleInput(running, snake);
+    
+    // Update, Render - the main game loop.
     Update();
     renderer.Render(snake, food);
 
@@ -68,6 +73,7 @@ void Game::PlaceFood() {
 void Game::Update() {
   if (!snake.alive) return;
 
+  // button.Update();
   snake.Update();
 
   int new_x = static_cast<int>(snake.head_x);
