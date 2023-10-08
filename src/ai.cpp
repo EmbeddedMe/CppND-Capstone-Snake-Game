@@ -6,19 +6,30 @@ void AI::MoveTowardsFood(Snake& snake, SDL_Point food) {
   int headX = snake.head_x; 
   int headY = snake.head_y;
 
-  // Calculate direction towards food
-  Snake::Direction direction;
-  if (food.x > headX) {
-    direction = Snake::Direction::kRight; 
-  } else if (food.x < headX) {
-    direction = Snake::Direction::kLeft;
-  } else if (food.y > headY) {
-    direction = Snake::Direction::kDown;
-  } else if (food.y < headY) {
-    direction = Snake::Direction::kUp;
+  // Calculate possible directions towards food that avoid the snake body
+  std::vector<Snake::Direction> directions;
+
+  if (snake.direction != Snake::Direction::kLeft && food.x > headX && !snake.SnakeCell(headX + 1, headY)) {
+    directions.push_back(Snake::Direction::kRight);
+  }
+  
+  if (snake.direction != Snake::Direction::kRight && food.x < headX && !snake.SnakeCell(headX - 1, headY)) {  
+    directions.push_back(Snake::Direction::kLeft);
   }
 
-  // Set snake direction
-  snake.direction = direction;
+  if (snake.direction != Snake::Direction::kUp && food.y > headY && !snake.SnakeCell(headX, headY + 1)) {
+    directions.push_back(Snake::Direction::kDown);
+  }
 
+  if (snake.direction != Snake::Direction::kDown && food.y < headY && !snake.SnakeCell(headX, headY - 1)) {
+    directions.push_back(Snake::Direction::kUp);
+  }
+
+  // Select first viable direction
+  if (!directions.empty()) {
+      snake.direction = directions[0]; 
+  } else {
+    // Just go up by defaut
+    snake.direction = Snake::Direction::kUp;
+  }
 }

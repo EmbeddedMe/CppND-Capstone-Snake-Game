@@ -77,3 +77,13 @@ bool Snake::SnakeCell(int x, int y) {
   }
   return false;
 }
+
+void Snake::ChangeSpeed(float speed) {
+  if(this->speed > 0.5){
+    this->speed = 0.5;
+  } else {
+    this->speed = speed;
+  }
+  std::cout << "Speed: " << this->speed <<std::endl;
+  return;
+}

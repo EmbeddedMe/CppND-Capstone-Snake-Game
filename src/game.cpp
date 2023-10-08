@@ -26,7 +26,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     ai.MoveTowardsFood(snake, food);
 
     // Input
-    // controller.HandleInput(running, snake);
+    controller.HandleInput(running, snake);
     
     // Update, Render - the main game loop.
     Update();
@@ -85,7 +85,7 @@ void Game::Update() {
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.speed += 0.02;
+    snake.ChangeSpeed(snake.speed += 0.02);
   }
 }
 
