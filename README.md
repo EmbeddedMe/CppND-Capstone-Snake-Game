@@ -4,8 +4,6 @@ This project is based on the starter repo for the Capstone project in the [Udaci
 
 I've extended the game by automating the snake. It attempts to avoid it's own body while heading towards the food. The algorithm is extremely basic so it will hit it's own body quite quickly.
 
-<img src="snake_game.gif"/>
-
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
