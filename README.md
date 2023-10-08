@@ -2,7 +2,13 @@
 
 This project is based on the starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
-I've extended the game by automating the snake. It attempts to avoid it's own body while heading towards the food. The algorithm is extremely basic so it will hit it's own body quite quickly.
+## New Features
+- Created an AI snake to chase the food while trying to avoid it's own body.
+- Get user input to move the food while the snake is chasing it, including changing the speed of the food using the mousebuttons.
+- Created new Food and AI classes.
+- Food spawns in a new location with user control still active.
+- Added functionality to reset the game using the "r" key. This resets the snake completely.
+- Save last score to a file.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -30,7 +36,7 @@ I've extended the game by automating the snake. It attempts to avoid it's own bo
 - README (All Rubric Points REQUIRED) [Completed]
 - Compiling and Testing (All Rubric Points REQUIRED) [Completed]
 - The project demonstrates an understanding of C++ functions and control structures. [Completed]
-  - New functions were added in ai.cpp, a switch control structure was used in controller.cpp, lines 39-55.
+  - New functions were added in ai.cpp, a switch control structure was used in controller.cpp, lines 34-50.
 - The project accepts user input and processes the input. [Completed]
   - controller.cpp, lines 39-55 - the user can increase and decrease the speed of the snake between it's limits using the right and left mouse buttons respectively.
 - The project uses Object Oriented Programming techniques. [Completed]
