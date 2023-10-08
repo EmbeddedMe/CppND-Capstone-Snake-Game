@@ -22,7 +22,7 @@ class Game {
   float GetSpeed() const;
 
  private:
-  Snake snake;
+  std::vector<Snake> snakes;
   Food food;
 
   std::random_device dev;

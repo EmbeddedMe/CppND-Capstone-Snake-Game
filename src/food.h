@@ -21,7 +21,7 @@ class Food {
 
   Direction direction = Direction::kUp;
 
-  float speed{0.1f};
+  float speed{0.2f};
   float x;
   float y;
 
