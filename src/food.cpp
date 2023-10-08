@@ -2,21 +2,33 @@
 #include "food.h"
 #include "snake.h"
 
-void Food::Update() {}
+void Food::Update() {
+    switch (direction) {
+    case Direction::kUp:
+      y -= speed;
+      break;
 
-SDL_Point Food::NewFood(Snake const &snake){
-  SDL_Point food;
-  int x, y;
-  while (true) {
-    x = random_w(engine);
-    y = random_h(engine);
-    // Check that the location is not occupied by a snake item before placing
-    // food.
-    if (!snake.SnakeCell(x, y)) {
-      food.x = x;
-      food.y = y;
-      return;
-    }
+    case Direction::kDown:
+      y += speed;
+      break;
+
+    case Direction::kLeft:
+      x -= speed;
+      break;
+
+    case Direction::kRight:
+      x += speed;
+      break;
   }
+
+  // Wrap the Snake around to the beginning if going off of the screen.
+  x = fmod(x + grid_width, grid_width);
+  y = fmod(y + grid_height, grid_height);
+}
+
+void Food::NewFood(int x, int y){
+  this->x = x;
+  this->y = y;
+  return;
 }
       

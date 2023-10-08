@@ -37,7 +37,6 @@ class Snake {
   float head_x;
   float head_y;
   std::vector<SDL_Point> body;
-  std::unordered_set<SDL_Point, SDL_PointHash> bodySet;
 
  private:
   void UpdateHead();
