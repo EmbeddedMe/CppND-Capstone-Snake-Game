@@ -2,6 +2,8 @@
 
 This project is based on the starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
+I've extended the game by automating the snake. It attempts to avoid it's own body while heading towards the food. The algorithm is extremely basic so it will hit it's own body quite quickly.
+
 <img src="snake_game.gif"/>
 
 ## Dependencies for Running Locally
@@ -26,6 +28,20 @@ This project is based on the starter repo for the Capstone project in the [Udaci
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
+## Rubric 
+- README (All Rubric Points REQUIRED) [Completed]
+- Compiling and Testing (All Rubric Points REQUIRED) [Completed]
+- The project demonstrates an understanding of C++ functions and control structures. [Completed]
+  - New functions were added in ai.cpp, a switch control structure was used in controller.cpp, lines 39-55.
+- The project accepts user input and processes the input. [Completed]
+  - controller.cpp, lines 39-55 - the user can increase and decrease the speed of the snake between it's limits using the right and left mouse buttons respectively.
+- The project uses Object Oriented Programming techniques. [Completed]
+  - A new AI class was created in ai.h and ai.cpp. The methodto change snake speed was removed from the controller class and implemented in the snake class - snake.cpp, lines 81-89.
+- Classes encapsulate behavior. [Completed]
+  - The AI class encapsulates the logic for the snake's automated movement and can easily be extended with new features.
+- The project reads data from a file and process the data, or the program writes data to a file. [Completed]
+  - The program saves the last game stats to a file - main.cpp, lines 26-42.
+
 
 ## CC Attribution-ShareAlike 4.0 International
 
@@ -40,25 +56,3 @@ This work is licensed under a
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
-
-## Rubric 
-
-| README (All Rubric Points REQUIRED) |
-| Success Criteria	| Specifications |
-A README with instructions is included with the project |
-
-The README is included with the project and has instructions for building/running the project.
-
-If any additional libraries are needed to run the project, these are indicated with cross-platform installation instructions.
-
-You can submit your writeup as markdown or pdf. |
-
-The README indicates which project is chosen.
-
-The README describes the project you have built.
-
-The README also indicates the file and class structure, along with the expected behavior or output of the program. |
-
-The README includes information about each rubric point addressed. |
-
-The README indicates which rubric points are addressed. The README also indicates where in the code (i.e. files and line numbers) that the rubric points are addressed. |

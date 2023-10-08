@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "controller.h"
 #include "game.h"
 #include "renderer.h"
@@ -21,5 +22,24 @@ int main() {
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
   std::cout << "Final Speed: " << game.GetSpeed() << "\n";
+
+    // Open a file for writing
+    std::ofstream outputFile("game_stats.txt");
+
+    if (outputFile.is_open()) {
+        // Write game stats to file
+        outputFile << "Previous Game Stats:\n";
+        outputFile << "Score: " << game.GetScore() << "\n";
+        outputFile << "Size: " << game.GetSize() << "\n";
+        outputFile << "Final Speed: " << game.GetSpeed() << "\n";
+
+        // Close the file
+        outputFile.close();
+
+        std::cout << "Statistics saved to 'game_stats.txt'.\n";
+    } else {
+        std::cerr << "Unable to open the file for writing.\n";
+    }
+
   return 0;
 }
