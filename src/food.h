@@ -18,6 +18,7 @@ class Food {
   void Update();
   
   void NewFood(int x, int y);
+  void ChangeSpeed(float speed);
 
   Direction direction = Direction::kUp;
 

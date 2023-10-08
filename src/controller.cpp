@@ -8,7 +8,7 @@ void Controller::ChangeDirection(Food &food, Food::Direction input) const {
   return;
 }
 
-void Controller::HandleInput(bool &running, Food &food) const {
+void Controller::HandleInput(bool &running, Food &food, bool &resetGame) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
@@ -30,7 +30,27 @@ void Controller::HandleInput(bool &running, Food &food) const {
         case SDLK_RIGHT:
           ChangeDirection(food, Food::Direction::kRight);
           break;
+        case SDLK_r:
+          std::cout << "Detected: KeyDown [r] -> Reset game\n";
+          resetGame = true;
+          break;
       }
+    } else if (e.type == SDL_MOUSEBUTTONDOWN) {
+      // Handle mouse events
+
+      switch(e.button.button){
+        // Decrease speed if left mouse button
+        case SDL_BUTTON_LEFT:
+          std::cout << "Detected: MouseButtonDown [Left] -> Decrease snake speed\n";
+          food.ChangeSpeed(food.speed/=1.1);
+          break;
+        // Increase speed if right mouse button
+        case SDL_BUTTON_RIGHT:
+          std::cout << "Detected: MouseButtonDown [Right] -> Increase snake speed\n";
+          food.ChangeSpeed(food.speed*=1.1);
+          break;
+
+      } 
     } 
   }
 }

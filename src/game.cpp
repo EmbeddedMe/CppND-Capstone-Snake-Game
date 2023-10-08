@@ -3,7 +3,7 @@
 #include "SDL.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
-    : snakes(2, Snake(grid_width, grid_height)),
+    : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)), food(grid_width, grid_height) {}
@@ -21,14 +21,14 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     frame_start = SDL_GetTicks();
 
     // Input
-    controller.HandleInput(running, food);
+    controller.HandleInput(running, food, resetGame);
     
     // Get automated control input for snake
-    ai.MoveTowardsFood(snakes, food);
+    ai.MoveTowardsFood(snake, food);
     
     // Update, Render - the main game loop.
     Update();
-    renderer.Render(snakes, food);
+    renderer.Render(snake, food);
 
     frame_end = SDL_GetTicks();
 
@@ -54,6 +54,13 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 }
 
 void Game::Update() {
+  
+  if(resetGame){
+    snake.Reset();
+    score = 0;
+    resetGame = false;
+  }
+  
   if (!snake.alive) return;
 
   // button.Update();

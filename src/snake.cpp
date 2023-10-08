@@ -87,3 +87,13 @@ void Snake::ChangeSpeed(float speed) {
   std::cout << "Speed: " << this->speed <<std::endl;
   return;
 }
+
+void Snake::Reset(){
+  // Reset the snake
+  body.clear();
+  size = 1;
+  alive = true;
+  head_x = grid_width / 2;
+  head_y = grid_height / 2;
+  return;
+}

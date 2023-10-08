@@ -20,9 +20,10 @@ class Game {
   int GetScore() const;
   int GetSize() const;
   float GetSpeed() const;
+  bool resetGame{false};
 
  private:
-  std::vector<Snake> snakes;
+  Snake snake;
   Food food;
 
   std::random_device dev;

@@ -5,7 +5,7 @@
 
 class Controller {
  public:
-  void HandleInput(bool &running, Food &food) const;
+  void HandleInput(bool &running, Food &food, bool &resetGame) const;
 
  private:
   void ChangeDirection(Food &food, Food::Direction input) const;

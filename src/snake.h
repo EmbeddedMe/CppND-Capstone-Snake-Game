@@ -5,14 +5,6 @@
 #include <unordered_set>
 #include "SDL.h"
 
-// Custom hash function for SDL_Point.
-struct SDL_PointHash {
-  std::size_t operator()(const SDL_Point& point) const {
-    // Combine the x and y coordinates to generate a hash.
-    return std::hash<int>()(point.x) ^ std::hash<int>()(point.y);
-  }
-};
-
 class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
@@ -28,6 +20,7 @@ class Snake {
   void GrowBody();
   bool SnakeCell(int x, int y);
   void ChangeSpeed(float speed);
+  void Reset();
 
   Direction direction = Direction::kUp;
 

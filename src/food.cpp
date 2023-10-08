@@ -31,4 +31,13 @@ void Food::NewFood(int x, int y){
   this->y = y;
   return;
 }
+
+void Food::ChangeSpeed(float speed) {
+  if(this->speed > 0.5){
+    this->speed = 0.5;
+  } else {
+    this->speed = speed;
+  }
+  return;
+}
       
