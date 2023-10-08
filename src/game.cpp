@@ -6,9 +6,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
-      random_h(0, static_cast<int>(grid_height - 1)) {
-  PlaceFood();
-}
+      random_h(0, static_cast<int>(grid_height - 1)), food(grid_width, grid_height) {}
 
 void Game::Run(Controller const &controller, Renderer &renderer,
                std::size_t target_frame_duration, AI &ai) {
@@ -22,11 +20,11 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   while (running) {
     frame_start = SDL_GetTicks();
 
+    // Input
+    controller.HandleInput(running, food);
+    
     // Get automated control input for snake
     ai.MoveTowardsFood(snake, food);
-
-    // Input
-    controller.HandleInput(running, snake);
     
     // Update, Render - the main game loop.
     Update();
@@ -55,21 +53,6 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
-void Game::PlaceFood() {
-  int x, y;
-  while (true) {
-    x = random_w(engine);
-    y = random_h(engine);
-    // Check that the location is not occupied by a snake item before placing
-    // food.
-    if (!snake.SnakeCell(x, y)) {
-      food.x = x;
-      food.y = y;
-      return;
-    }
-  }
-}
-
 void Game::Update() {
   if (!snake.alive) return;
 
@@ -82,7 +65,7 @@ void Game::Update() {
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {
     score++;
-    PlaceFood();
+    food.NewFood(snake);
     // Grow snake and increase speed.
     snake.GrowBody();
     snake.ChangeSpeed(snake.speed += 0.02);

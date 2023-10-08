@@ -5,7 +5,7 @@
 
 class AI {
 public:
-  void MoveTowardsFood(Snake &snake, SDL_Point food);
+  void MoveTowardsFood(Snake &snake, Food food);
 };
 
 #endif

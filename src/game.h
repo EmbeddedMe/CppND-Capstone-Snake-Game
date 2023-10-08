@@ -7,8 +7,10 @@
 #include "renderer.h"
 #include "snake.h"
 #include "ai.h"
+#include "food.h"
 
 class AI;
+class Food;
 
 class Game {
  public:
@@ -21,7 +23,7 @@ class Game {
 
  private:
   Snake snake;
-  SDL_Point food;
+  Food food;
 
   std::random_device dev;
   std::mt19937 engine;
@@ -29,8 +31,6 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
-
-  void PlaceFood();
   void Update();
 };
 

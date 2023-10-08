@@ -1,6 +1,6 @@
 #include "ai.h"
 
-void AI::MoveTowardsFood(Snake& snake, SDL_Point food) {
+void AI::MoveTowardsFood(Snake& snake, Food food) {
 
   // Get current head position
   int headX = snake.head_x; 
